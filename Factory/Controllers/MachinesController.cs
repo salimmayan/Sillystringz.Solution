@@ -11,37 +11,37 @@ namespace Factory.Controllers
 {
   public class MachinesController : Controller
   {
-  //   private readonly FactoryContext _db;
+    private readonly FactoryContext _db;
 
-  //   public MachinesController(FactoryContext db)
-  //   {
-  //     _db = db;
-  //   }
+    public MachinesController(FactoryContext db)
+    {
+      _db = db;
+    }
 
-  //   public ActionResult Index()
-  //   {
-  //     IEnumerable<Student> sortedStudents = _db.Students.ToList().OrderBy(student => student.StudentName);
-  //     return View(sortedStudents.ToList());
-  //   }
+    public ActionResult Index()
+    {
+      IEnumerable<Machine> sortedMachines = _db.Machines.ToList().OrderBy(machine => machine.MachineName);
+      return View(sortedMachines.ToList());
+    }
 
-  //   public ActionResult Create()
-  //   {
-  //     ViewBag.CourseId = new SelectList(_db.Courses, "CourseId", "CourseName");
-  //     return View();
-  //   }
+    public ActionResult Create()
+    {
+      ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "EngineerName");
+      return View();
+    }
 
-  //   [HttpPost]
-  //   public ActionResult Create(Student student, int CourseId)  //why int for string from drop
-  //   {
-  //     _db.Students.Add(student); //add new student btut no need to update course table - course already exists
-  //     _db.SaveChanges();
-  //     if (CourseId != 0) //why?
-  //     {
-  //       _db.CourseStudent.Add(new CourseStudent() { CourseId = CourseId, StudentId = student.StudentId });
-  //     }
-  //     _db.SaveChanges();
-  //     return RedirectToAction("Index");
-  //   }
+    [HttpPost]
+    public ActionResult Create(Machine machine, int EngineerId)  //why int for string from drop
+    {
+      _db.Machines.Add(machine); //add new student btut no need to update course table - course already exists
+      _db.SaveChanges();
+      if (EngineerId != 0) //why?
+      {
+        _db.EngineerMachine.Add(new EngineerMachine() { EngineerId = EngineerId, MachineId = machine.MachineId });
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
 
   //   public ActionResult Details(int id)
   //   {

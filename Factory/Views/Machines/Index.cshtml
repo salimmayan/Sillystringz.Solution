@@ -1,27 +1,27 @@
-@* @{
+@{
   Layout = "_Layout";
 }
 
-@using UniversityRegistrar.Models;
+@using Factory.Models;
 
-<h1>Students</h1>
+<h1>Machines</h1>
 
 @if (@Model.Count == 0)
 {
-  <h4>No students have been added yet!</h4>
+  <h4>No Machines have been added yet!</h4>
 }
 
 @if (@Model.Count != 0)
 {
   <div class="divClass">
-    <p><span class="left olive2">Student Name</span>   <span class="right olive2">ID</span></p>
+    <p><span class="left olive2">Machine Name</span>   <span class="right olive2">Machine Year</span></p>
     <br>
-    @foreach (Student student in Model)
+    @foreach (Machine machine in Model)
 
     {
-      <span class="left">@Html.ActionLink($"{student.StudentName}", "Details", new { id = student.StudentId })</span> <span
+      <span class="left">@Html.ActionLink($"{machine.MachineName}", "Details", new { id = machine.MachineYear })</span> <span
     class="right">
-        @student.StudentId </span>
+        @machine.MachineYear </span>
       <br>
     }
   </div>
@@ -29,16 +29,16 @@
 <br>
 <br>
 
-<h3>Display student that are complete</h3>
+<h3>Display machine that are complete</h3>
 
-@foreach (Student student in Model)
+@foreach (Machine machine in Model)
 {
-  @Html.DisplayFor(model => student.StudentName)
+  @Html.DisplayFor(model => machine.MachineName)
   <br>
-  @Html.DisplayFor(model => student.StudentId)
+  @Html.DisplayFor(model => machine.MachineYear)
 }
 
 <br>
 <br>
 
-<p>@Html.ActionLink("Add new student", "Create")</p> *@
+<p>@Html.ActionLink("Add new machine", "Create")</p>
