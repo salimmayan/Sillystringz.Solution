@@ -19,7 +19,7 @@
     @foreach (Machine machine in Model)
 
     {
-      <span class="left">@Html.ActionLink($"{machine.MachineName}", "Details", new { id = machine.MachineYear })</span> <span
+      <span class="left">@Html.ActionLink($"{machine.MachineName}", "Details", new { id = machine.MachineId })</span> <span
     class="right">
         @machine.MachineYear </span>
       <br>
@@ -27,16 +27,6 @@
   </div>
 }
 <br>
-<br>
-
-<h3>Display machine that are complete</h3>
-
-@foreach (Machine machine in Model)
-{
-  @Html.DisplayFor(model => machine.MachineName)
-  <br>
-  @Html.DisplayFor(model => machine.MachineYear)
-}
 
 <br>
 <br>

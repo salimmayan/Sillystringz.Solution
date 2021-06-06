@@ -1,37 +1,39 @@
-@* @{
+@{
+
+
 
   Layout = "_Layout";
 }
 
-@model UniversityRegistrar.Models.Student
+@model Factory.Models.Machine
 
-<h2>Student Details</h2>
-<hr />
-<div class="divClass">
-  <span class="left"><span class="heavy">@Html.DisplayNameFor(model => model.StudentName):</span> @Html.DisplayFor(model
-    => model.StudentName)</h3></span>
+<h2>Machine Details</h2>
+@* <div class="divClass">
+  <span class="left"><span class="heavy">@Html.DisplayNameFor(model => model.MachineName):</span> @Html.DisplayFor(model
+    => model.MachineName)</h3></span>
   <br><br>
-  <span class="left"><span class="heavy">@Html.DisplayNameFor(model => model.Year):</span> @Html.DisplayFor(model =>
-    model.Year)</h3></span>
+  <span class="left"><span class="heavy">@Html.DisplayNameFor(model => model.MachineYear):</span> @Html.DisplayFor(model
+    =>
+    model.MachineYear)</h3></span>
 </div>
-<br> <br> <br>
+<br> <br> <br> *@
 
-<h4>Course the Student belongs to:</h4>
-
-<ul>
-  @foreach (var join in Model.JoinEntities)
+<h4>Engineer the Machine belongs to:</h4>
+<div class="divClass">
+@foreach (var join in Model.JoinEntities)
+{
+  <p><span class="left olive2">@join.Machine.MachineName</span> <span
+    class="right olive2">@join.Machine.MachineYear</span></p>
+  @using (Html.BeginForm("DeleteMachine", "Machines"))
   {
-    <li>@join.Course.CourseName</li>
-    @using (Html.BeginForm("DeleteCourse", "Students"))
-    {
-      @Html.Hidden("joinId", @join.CourseStudentId)
-      <input type="submit" value="Delete" />
-    }
+    @Html.Hidden("joinId", @join.EngineerMachineId)
+    <input type="submit" value="Delete" />
   }
-</ul>
+}
+</div>
+<br> <br>
 
-
-<p>@Html.ActionLink("Add a Course", "AddCourse", new { id = Model.StudentId })</p>
-<p>@Html.ActionLink("Back to list", "Index")</p>
-<p>@Html.ActionLink("Edit Student", "Edit", new { id = Model.StudentId })</p>
-<p>@Html.ActionLink("Delete Student", "Delete", new { id = Model.StudentId })</p> *@
+<p>@Html.ActionLink("Add a Machine", "AddMachine", new { id = Model.MachineId })</p>
+<p>@Html.ActionLink("Back to Machine list", "Index")</p>
+<p>@Html.ActionLink("Edit Machine", "Edit", new { id = Model.MachineId })</p>
+<p>@Html.ActionLink("Delete Machine", "Delete", new { id = Model.MachineId })</p>

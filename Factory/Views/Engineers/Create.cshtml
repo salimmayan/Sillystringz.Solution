@@ -15,9 +15,9 @@
     <p><span class="left olive2">@Html.Label("EngineerTitle")</span> <span class="right olive2">@Html.TextBoxFor(model =>
       model.EngineerTitle, new { required = "required"})</span></p>
     <br><br>
-    <br>
-    @Html.Label("Eligible Machines")
-    @Html.DropDownList("MachineId", null, string.Empty)
+    <p><span class="left olive2">@Html.Label("Eligible Machines")</span> <span class="right olive2">
+    @Html.DropDownList("MachineId", null, string.Empty)</span></p>
+    <br> <br> <br>
 
     <input type="submit" value="Add new engineer" required="true" />
   }
