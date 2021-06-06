@@ -14,13 +14,13 @@
 @if (@Model.Count != 0)
 {
   <div class="divClass">
-    <p><span class="left olive2">Engineer Name</span> <span class="right olive2">ID</span></p>
+    <p><span class="left olive2">Engineer Name</span> <span class="right olive2">Title</span></p>
     <br>
     @foreach (Engineer engineer in Model)
     {
-      <span class="left">@Html.ActionLink($"{engineer.EngineerName}", "Details", new { id = engineer.EngineerId })</span> <span
+      <span class="left">@Html.ActionLink($"{engineer.EngineerName}", "Details", new { title = engineer.EngineerTitle })</span> <span
     class="right">
-        @engineer.EngineerId </span>
+        @engineer.EngineerTitle </span>
       <br>
     }
   </div>
