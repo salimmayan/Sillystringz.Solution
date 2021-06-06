@@ -1,29 +1,29 @@
-@* @{
+@{
   Layout = "_Layout";
 }
 
-@model UniversityRegistrar.Models.Course;
+@model Factory.Models.Engineer;
 
-<h2>Course Details</h2>
+<h2>Engineer Details</h2>
 <hr />
-<h3>@Html.DisplayNameFor(model => model.CourseName): @Html.DisplayFor(model => model.CourseName)</h3>
-<h3>@Html.DisplayNameFor(model => model.CourseId): @Html.DisplayFor(model => model.CourseId)</h3>
+<h3>@Html.DisplayNameFor(model => model.EngineerName): @Html.DisplayFor(model => model.EngineerName)</h3>
+<h3>@Html.DisplayNameFor(model => model.EngineerId): @Html.DisplayFor(model => model.EngineerId)</h3>
 @if(@Model.JoinEntities.Count == 0)
 {
-  <p>This Course does not contain any students</p>
+  <p>This Engineer does not have any machines</p>
 }
 else
 {
-  <h4>Students the Course contains:</h4>
+  <h4>Machines this Engineer can Operate:</h4>
   <ul>
   @foreach(var join in Model.JoinEntities)
   {
-    <li>@join.Course.CourseName</li>
-    <li>@join.Course.CourseId</li>
+    <li>@join.Engineer.EngineerName</li>
+    <li>@join.Engineer.EngineerId</li>
   }
   </ul>
 }
 
-<p>@Html.ActionLink("Back to Courses", "Index")</p>
-<p>@Html.ActionLink("Edit Course", "Edit", new { id = Model.CourseId })</p>
-<p>@Html.ActionLink("Delete Course", "Delete", new { id = Model.CourseId })</p> *@
+<p>@Html.ActionLink("Back to Engineers", "Index")</p>
+<p>@Html.ActionLink("Edit Engineer", "Edit", new { id = Model.EngineerId })</p>
+<p>@Html.ActionLink("Delete Engineer", "Delete", new { id = Model.EngineerId })</p>
