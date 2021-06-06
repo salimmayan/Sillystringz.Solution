@@ -1,22 +1,28 @@
-@* @{
+@{
+
   Layout = "_Layout";
 }
 
-@model UniversityRegistrar.Models.Student
+@model Factory.Models.Machine
 
-<h4>Add a new task</h4>
+<h1>Add a new Machine</h1>
 
-@using (Html.BeginForm())
-{
-  @Html.LabelFor(model => model.StudentName)
-  @Html.TextBoxFor(model => model.StudentName)
+<div class="divClass">
+  @using (Html.BeginForm())
 
-  @Html.LabelFor(model => model.Year)  //convert to drop down
-  @Html.TextBoxFor(model => model.Year)
+  {
+    <p><span class="left olive2">@Html.Label("MachineName")</span> <span class="right olive2">@Html.TextBoxFor(model =>
+      model.MachineName, new { required = "required"})</span></p>
+    <br> <br>
 
-  @Html.Label("Select course")
-  @Html.DropDownList("CourseId")
+    <p><span class="left olive2"> @Html.Label("MachineYear")</span> <span class="right olive2">@Html.TextBoxFor(model =>
+      model.MachineYear, new { required = "required"})</span></p>
+    <br> <br>
 
-  <input type="submit" value="Add new student" class="btn btn-default" />
-}
-<p>@Html.ActionLink("Show all students", "Index")</p> *@
+    @Html.Label("Select Engineers")
+    @Html.DropDownList("EngineerId")
+
+    <input type="submit" value="Add new machine" class="btn btn-default" required="true" />
+
+  }
+  <p>@Html.ActionLink("Show all machines", "Index")</p>
