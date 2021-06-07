@@ -8,7 +8,7 @@
 
 ## Description
 
-#### An MVC app built for _Dr. Sillystringz's_ factory to help manage _Engineers_ and the _Machines_.  _Dr. Sillystringz_ is allowed to add a list of engineers, a list of machines, and specify which engineers are licensed to repair which machines (implementation of many-to-many relationship between `Engineer`s and `Machine`s). 
+#### An MVC app built for _Dr. Sillystringz's_ factory to help manage _Engineers_ and  _Machines_.  _Dr. Sillystringz_ is allowed to add a list of engineers, a list of machines, and specify which engineers are licensed to repair which machines (implementation of many-to-many relationship between `Engineer`s and `Machine`s). 
 
 ### Implemented User Stories
 
