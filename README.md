@@ -8,7 +8,7 @@
 
 ## Description
 
-#### An MVC app built for _Dr. Sillystringz_ factory to help manage _Engineers_ and the _Machines_ they are licensed to fix.  User is allowed to to add a list of engineers, a list of machines, and specify which engineers are licensed to repair which machines (implementation of many-to-many relationship between `Engineer`s and `Machine`s). 
+#### An MVC app built for _Dr. Sillystringz's_ factory to help manage _Engineers_ and the _Machines_.  _Dr. Sillystringz_ is allowed to add a list of engineers, a list of machines, and specify which engineers are licensed to repair which machines (implementation of many-to-many relationship between `Engineer`s and `Machine`s). 
 
 ### Implemented User Stories
 
@@ -17,7 +17,7 @@
 -   Dr. Sillystringz need to add new engineers to system when they are hired. Dr. Sillystringz also need to add new machines to system when they are installed.
 -   Dr. Sillystringz should be able to add new machines even if no engineers are employed. Dr. Sillystringz should also be able to add new engineers even if no machines are installed
 -   Dr. Sillystringz need to be able to add or remove machines that a specific engineer is licensed to repair. Dr. Sillystringz also need to be able to modify this relationship from the other side, and add or remove engineers from a specific machine.
--   Dr. Sillystringz should be able to navigate to a splash page that lists all engineers and machines. Users should be able to click on an individual engineer or machine to see all the engineers/machines that belong to it.
+-   Dr. Sillystringz should be able to navigate to a splash page that lists all engineers and machines. Dr. Sillystringz should be able to click on an individual engineer or machine to see all the engineers/machines that belong to it.
 
 ## Setup/Installation Requirements
 
@@ -32,9 +32,9 @@
 5. **Re-create Database with MySQL Workbench Migration Functionality**:  From command line navigate to `Factory`  directory and execute below three commands    
 	-   		dotnet restore
 	-   		dotnet ef migrations add Initial
-	-          dotnet ef database update
+	-           dotnet ef database update
     
-   *Note*: Reopen the  _Navigator_  >  _Schemas_  tab. Right click and select  _Refresh All_ (new database will appear with the name "salim_mayan".
+   *Note*: In _MySQL Workbench_ Reopen the  _Navigator_  >  _Schemas_  tab. Right click and select  _Refresh All_ (new database will appear with the name "salim_mayan".
 
 6. **Execute Application:** Navigate to `Factory` directory and enter `dotnet run`
 
