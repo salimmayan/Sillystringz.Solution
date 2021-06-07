@@ -50,6 +50,16 @@ namespace Factory.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        //Routes takes care of removing association b/w Engg and M/C (by clicking button inside Details page - removes row from 3rd table
+        [HttpPost]
+        public ActionResult DeleteMachine(int joinId)
+        {
+            var joinEntry = _db.EngineerMachine.FirstOrDefault(entry => entry.EngineerMachineId == joinId);
+            _db.EngineerMachine.Remove(joinEntry);
+            _db.SaveChanges();
+            return RedirectToAction("Details", new { id = joinEntry.EngineerId });
+        }
         
         public ActionResult Edit(int id)
         {
@@ -99,14 +109,7 @@ namespace Factory.Controllers
         //     return RedirectToAction("Index");
         // }
 
-        // [HttpPost]
-        // public ActionResult DeleteMachine(int joinId)
-        // {
-        //     var joinEntry = _db.EngineerMachine.FirstOrDefault(entry => entry.EngineerMachineId == joinId);
-        //     _db.EngineerMachine.Remove(joinEntry);
-        //     _db.SaveChanges();
-        //     return RedirectToAction("Details", new { id = joinEntry.EngineerId });
-        // }
+
 
     }
 }
