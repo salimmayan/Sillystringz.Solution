@@ -61,24 +61,24 @@ namespace Factory.Controllers
             return RedirectToAction("Details", new { id = joinEntry.MachineId });
         }
 
-        //     public ActionResult Edit(int id)
-        //     {
-        //       var thisItem = _db.Items.FirstOrDefault(item => item.StudentId == id);
-        //       ViewBag.CourseId = new SelectList(_db.Categories, "CourseId", "Name");
-        //       return View(thisItem);
-        //     }
+        public ActionResult Edit(int id)
+        {
+            var thisItem = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
+            ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
+            return View(thisItem);
+        }
 
-        //     [HttpPost]
-        //     public ActionResult Edit(Item item, int CourseId)
-        //     {
-        //       if (CourseId != 0)
-        //       {
-        //         _db.CategoryItem.Add(new CategoryItem() { CourseId = CourseId, StudentId = item.StudentId });
-        //       }
-        //       _db.Entry(item).State = EntityState.Modified;
-        //       _db.SaveChanges();
-        //       return RedirectToAction("Index");
-        //     }
+        [HttpPost]
+        public ActionResult Edit(Machine machine, int MachineId)
+        {
+            if (MachineId != 0)
+            {
+                _db.EngineerMachine.Add(new EngineerMachine() { MachineId = MachineId, EngineerId = machine.MachineId });
+            }
+            _db.Entry(machine).State = EntityState.Modified;
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
         //     public ActionResult AddCategory(int id)
         //     {

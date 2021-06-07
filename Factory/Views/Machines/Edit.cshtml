@@ -1,27 +1,31 @@
-@* @{
+@{
+
   Layout = "_Layout";
 }
 
-@model ToDoList.Models.Item
+@model Factory.Models.Machine
 
 <h2>Edit</h2>
 
-<h4>Edit this task: @Html.DisplayFor(model => model.Description)</h4>
+<h4>Edit Machine: <span class="olive">@Html.DisplayFor(model => model.MachineName)</span></h4>
+<br>
+<div class="divClass">
+  @using (Html.BeginForm())
 
-@using (Html.BeginForm())
-{
-  @Html.HiddenFor(model => model.ItemId)
+  {
+    @Html.HiddenFor(model => model.MachineId)
+    <br>
+    <p><span class="left olive2">@Html.Label("Machine Name")</span> <span class="right olive2">
+        @Html.EditorFor(model => model.MachineName)</span></p>
+    <br>
 
-  @Html.LabelFor(model => model.Description)
-  @Html.EditorFor(model => model.Description)
+    <p><span class="left olive2">@Html.Label("Machine Year")</span> <span class="right olive2">
+        @Html.EditorFor(model => model.MachineYear)</span></p>
+    <br><br><br>
+    <input type="submit" class="btn btn-default" value="Save Edits" />
 
-  @Html.LabelFor(model => model.ItemCompletion)
-  @Html.EditorFor(model => model.ItemCompletion)
+  }
 
-  @Html.Label("Select category")
-  @Html.DropDownList("CategoryId")
-
-  <input type="submit" value="Save" />
-}
-
-<p>@Html.ActionLink("Back to list", "Index")</p> *@
+  <br><br><br>
+  <p>@Html.ActionLink("Back to list of Machines", "Index")</p>
+</div>
