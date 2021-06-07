@@ -2,6 +2,37 @@
   Layout = "_Layout";
 }
 
+@using Factory.Models
+
 <h1>Welcome to the Dr. Sillystringz's Factory</h1>
-<p>@Html.ActionLink("See all engineers", "Index", "Engineers")</p> 
-<p>@Html.ActionLink("See all machines", "Index", "Machines")</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Table of Engineers</h3>
+      @if (@ViewBag.EngineerInfo.Count == 0)
+      {
+        <h4>There exist no Engineer</h4>
+      }
+      @foreach (Engineer engineer in @ViewBag.EngineerInfo)
+      {
+        <li>@engineer.EngineerName</li>
+      }
+    </div>
+    <div class="col-md-6">
+      <h3>Table of Machines</h3>
+      @if (@ViewBag.MachineInfo.Count == 0)
+      {
+        <h4>There exist no Machine</h4>
+      }
+      @foreach (Machine machine in @ViewBag.MachineInfo)
+      {
+        <li>@machine.MachineName</li>
+      }
+    </div>
+  </div>
+</div>
+
+<br><br><br>
+<p>@Html.ActionLink("See all Engineers", "Index", "Engineers")</p>
+<p>@Html.ActionLink("See all Machines", "Index", "Machines")</p>
