@@ -4,13 +4,14 @@
 
 @model Factory.Models.Engineer
 
-<h2>Are you sure you want to delete this?</h2>
+<h2>DELETE Confirmation Page</h2>
 
-@Html.Label("EngineerName:") @Html.Label(@Model.EngineerName)
-
-@* @Html.DisplayNameFor(model => model.EngineerName): @Html.DisplayFor(model => model.Name) *@
-@using (Html.BeginForm())
-{
-  <input type="submit" value="Delete" />
-}
-@Html.ActionLink("Back to List", "Index")
+<h4>Are you sure about deleting Engineer: <span class="olive">@Html.Label(@Model.EngineerName)</span></h4>
+<br><br>
+<div class="divClass">
+  @using (Html.BeginForm())
+  {
+    <input type="submit" class="btn btn-default" value="Delete?" />
+  }
+  <br><br><br>
+  @Html.ActionLink("Back to List of Engineers", "Index")
