@@ -20,7 +20,7 @@
     <br> <br>
 
     <p><span class="left olive2"> @Html.Label("Select Engineers")</span> <span class="right olive2">
-    @Html.DropDownList("EngineerId")</span></p>
+    @Html.DropDownList("EngineerId", null, string.Empty)</span></p>
     <br> <br>
 
     <input type="submit" value="Add new machine" class="btn btn-default" required="true" />
@@ -29,3 +29,4 @@
 
       <br> <br>
   <p>@Html.ActionLink("Show all machines", "Index")</p>
+  <p>@Html.ActionLink("Home", "Index", "Home")</p>

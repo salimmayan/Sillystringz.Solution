@@ -16,6 +16,9 @@ body {
 	padding: 0;
   }
 
+li {
+	list-style-type:none;
+}
 
   .containerExtra {
 	background-color: #f88778;
@@ -39,7 +42,7 @@ body {
 	color: olive;
   }
   
-  
+ 
   h6 {
 	padding-left: 12px;
 	text-align: left !important;

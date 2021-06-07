@@ -5,30 +5,40 @@
 @model Factory.Models.Engineer;
 
 <h2>Engineer Details</h2>
-<p>Engineer Name: @Model.EngineerName</p>
-<p>Engineer Title: @Model.EngineerTitle</p>
-@* <h3>@Html.DisplayNameFor(model => model.EngineerId): @Html.DisplayFor(model => model.EngineerId)</h3> *@
+<div class="divClass">
+  <span class="left">
+    Engineer Name:
+  </span> <span class="right">@Model.EngineerName</span>
+  <br>
+  <span class="left">
+    Engineer Title:
+  </span> <span class="right">@Model.EngineerTitle</span>
+  <br><br><br>
+  @* <h3>@Html.DisplayNameFor(model => model.EngineerId): @Html.DisplayFor(model => model.EngineerId)</h3> *@
 
-@if(@Model.JoinEntities.Count == 0)
-{
-  <p>This Engineer does not have any machines</p>
-}
-else
-{
-   <h4>Machines @Model.EngineerName engineer can repair:</h4>
-  <ul>
-    @foreach(var join in Model.JoinEntities)
-    {
-      <li>@join.Machine.MachineName </li> 
-      @using (Html.BeginForm("DeleteMachine", "Engineers"))
+  @if (@Model.JoinEntities.Count == 0)
+  {
+    <p>This Engineer does not have any machines</p>
+
+  }
+  else
+  {
+    <h5>Machines engineer <span class = "olive">@Model.EngineerName</span> can repair:</h5>
+    <ul class = "no-bullets">
+      @foreach (var join in Model.JoinEntities)
       {
-        @Html.Hidden("joinId", @join.EngineerMachineId)
-        <input type="submit" value="remove" />
+        <li>@join.Machine.MachineName </li>
+        @using (Html.BeginForm("DeleteMachine", "Engineers"))
+        {
+          @Html.Hidden("joinId", @join.EngineerMachineId)
+          <input type="submit" value="remove" />          
+        }
+        <br>
       }
-    }
-  </ul>
-}
-
+    </ul>
+  }
+</div>
+<br><br>
 <p>@Html.ActionLink("Back to Engineers", "Index")</p>
 <p>@Html.ActionLink("Edit Engineer", "Edit", new { id = Model.EngineerId })</p>
 <p>@Html.ActionLink("Delete Engineer", "Delete", new { id = Model.EngineerId })</p>

@@ -22,12 +22,22 @@ namespace Factory.Controllers
             return View(sortedEngineers.ToList());
         }
 
-        public ActionResult Create()
+        //View needs data from Joint table (all rows in Joint table that have EnigneerID - so can tell how many Machines Engineer can operate)
+        public ActionResult Details(int id)  
+        {
+            var thisEngineer = _db.Engineers.Include(engineer => engineer.JoinEntities).ThenInclude(join => join.Machine).FirstOrDefault(engineer => engineer.EngineerId == id);
+            return View(thisEngineer);
+        }
+
+        //View needs data from Machine table (to populate drop down) 
+        public ActionResult Create()  
         {
             ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
             return View();
         }
 
+        //Name and title submitted via form is incuded in parameter "Engineer engineer" while drop down selection is in "int MachineId"
+        //Write to 2 tables: a Row is added to Engineer table and 2 foreign keys are added to Joint table.
         [HttpPost]
         public ActionResult Create(Engineer engineer, int MachineId)
         {
@@ -39,12 +49,6 @@ namespace Factory.Controllers
             }
             _db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        public ActionResult Details(int id)
-        {
-            var thisEngineer = _db.Engineers.Include(engineer => engineer.JoinEntities).ThenInclude(join => join.Machine).FirstOrDefault(engineer => engineer.EngineerId == id);
-            return View(thisEngineer);
         }
         
         public ActionResult Edit(int id)
