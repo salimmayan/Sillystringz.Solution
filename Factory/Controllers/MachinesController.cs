@@ -4,8 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Factory.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System;
-using System.Diagnostics;
 
 namespace Factory.Controllers
 {
@@ -64,6 +62,7 @@ namespace Factory.Controllers
         public ActionResult Edit(int id)
         {
             var thisItem = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
+            // ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
             ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
             return View(thisItem);
         }
@@ -94,23 +93,23 @@ namespace Factory.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+        // public ActionResult AddEngineer(int id)
+        // {
+        //     var thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
+        //     ViewBag.EngineerInfo = new SelectList(_db.Engineers, "EngineerId", "EngineerName");
+        //     return View(thisMachine);
+        // }
 
-        //     public ActionResult AddCategory(int id)
+        // [HttpPost]
+        // public ActionResult AddEngineer(Machine machine, int EngineerId)
+        // {
+        //     if (EngineerId != 0)
         //     {
-        //       var thisItem = _db.Items.FirstOrDefault(item => item.StudentId == id);
-        //       ViewBag.CourseId = new SelectList(_db.Categories, "CourseId", "Name");
-        //       return View(thisItem);
+        //         _db.EngineerMachine.Add(new EngineerMachine() { EngineerId = EngineerId, MachineId = machine.MachineId });
         //     }
-
-        //     [HttpPost]
-        //     public ActionResult AddCategory(Item item, int CourseId)
-        //     {
-        //       if (CourseId != 0)
-        //       {
-        //       _db.CategoryItem.Add(new CategoryItem() { CourseId = CourseId, StudentId = item.StudentId});
-        //       }
-        //       _db.SaveChanges();
-        //       return RedirectToAction("Index");
-        //     }
+        //     _db.SaveChanges();
+        //     // return RedirectToAction("Index");
+        //     return RedirectToAction("Details", new { id = machine.MachineId });
+        // }
     }
 }
