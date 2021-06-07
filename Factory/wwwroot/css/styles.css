@@ -62,8 +62,16 @@ li {
   label,button {
 	color: olive;
 	font-weight: 1200;
+  }  
+
+  .inputClass {
+	color: olive;
+	font-weight: 1200;
+	background-color: #f88778;
+	border: whitesmoke;
+	border-style: outset;
   }
-  
+
   .titleColor {
 	padding-top: 30px;
 	padding-bottom: 30px;

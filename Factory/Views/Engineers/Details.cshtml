@@ -24,14 +24,15 @@
   else
   {
     <h5>Machines engineer <span class = "olive">@Model.EngineerName</span> can repair:</h5>
+    <br>
     <ul class = "no-bullets">
       @foreach (var join in Model.JoinEntities)
       {
-        <li>@join.Machine.MachineName </li>
+        <h5><span class = "olive">@join.Machine.MachineName</span> </h5>
         @using (Html.BeginForm("DeleteMachine", "Engineers"))
         {
           @Html.Hidden("joinId", @join.EngineerMachineId)
-          <input type="submit" value="Remove Engg from M/C" />          
+          <input type="submit" class = "btn btn-default" value="Remove Engg from Machine" />          
         }
         <br>
       }
@@ -40,5 +41,6 @@
 </div>
 <br><br>
 <p>@Html.ActionLink("Back to Engineers", "Index")</p>
-<p>@Html.ActionLink("Edit Engineer", "Edit", new { id = Model.EngineerId })</p>
+@* <p>@Html.ActionLink("Edit Engineer", "Edit", new { id = Model.EngineerId })</p> *@
 <p>@Html.ActionLink("Delete Engineer", "Delete", new { id = Model.EngineerId })</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
