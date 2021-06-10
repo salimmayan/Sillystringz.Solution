@@ -23,14 +23,14 @@ namespace Factory.Controllers
         }
 
         //View needs data from Joint table (all rows in Joint table that have EnigneerID - so can tell how many Machines Engineer can operate)
-        public ActionResult Details(int id)  
+        public ActionResult Details(int id)
         {
             var thisEngineer = _db.Engineers.Include(engineer => engineer.JoinEntities).ThenInclude(join => join.Machine).FirstOrDefault(engineer => engineer.EngineerId == id);
             return View(thisEngineer);
         }
 
         //View needs data from Machine table (to populate drop down) 
-        public ActionResult Create()  
+        public ActionResult Create()
         {
             ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
             return View();
@@ -60,22 +60,27 @@ namespace Factory.Controllers
             _db.SaveChanges();
             return RedirectToAction("Details", new { id = joinEntry.EngineerId });
         }
-        
+
         public ActionResult Edit(int id)
         {
             var thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
+            ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName", "Machineyear");
             return View(thisEngineer);
         }
 
         [HttpPost]
-        public ActionResult Edit(Engineer engineer)
+        public ActionResult Edit(Engineer engineer, int MachineId)
         {
+            if (MachineId != 0)
+            {
+                _db.EngineerMachine.Add(new EngineerMachine() { MachineId = MachineId, EngineerId = engineer.EngineerId });
+            }
             _db.Entry(engineer).State = EntityState.Modified;
             _db.SaveChanges();
-            return RedirectToAction("Details", new { id = engineer.EngineerId });
+            return RedirectToAction("Index");
         }
 
-         public ActionResult Delete(int id)
+        public ActionResult Delete(int id)
         {
             var thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
             return View(thisEngineer);
@@ -109,7 +114,7 @@ namespace Factory.Controllers
         //     return RedirectToAction("Details", new { id = engineer.EngineerId });
         // }
 
-       
+
 
 
 
